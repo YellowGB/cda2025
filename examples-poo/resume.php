@@ -1,6 +1,6 @@
 <?php
 
-class Person
+abstract class Person
 {
     protected string $lastName;
     protected string $firstName;
@@ -44,7 +44,12 @@ class Person
     }
 }
 
-final class Student extends Person implements LogsIntoStudyNetwork
+abstract class MemberOfStudyNetwork extends Person
+{
+    abstract public function logIn(): void;
+}
+
+final class Student extends MemberOfStudyNetwork
 {
     private string $degree;
 
@@ -70,7 +75,7 @@ final class Student extends Person implements LogsIntoStudyNetwork
     }
 }
 
-final class Teacher extends Person implements LogsIntoStudyNetwork
+final class Teacher extends MemberOfStudyNetwork
 {
     private string $subject;
 
@@ -97,8 +102,3 @@ final class Teacher extends Person implements LogsIntoStudyNetwork
 }
 
 final class Janitor extends Person {}
-
-interface LogsIntoStudyNetwork
-{
-    public function logIn(): void;
-}
