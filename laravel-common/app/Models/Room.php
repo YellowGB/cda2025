@@ -14,4 +14,8 @@ class Room extends Model
         'name',
         'is_booked',
     ];
+
+    protected $casts = [
+        'is_booked' => 'boolean',
+    ];
 }
