@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoomSeeder::class,
+            NeoSeeder::class,
         ]);
     }
 }
