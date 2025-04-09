@@ -11,7 +11,7 @@ class StoreNeoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreNeoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'moto' => 'Required',
+            'cigarette' => 'Nullable',
         ];
     }
 }

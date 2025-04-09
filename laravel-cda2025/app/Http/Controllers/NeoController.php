@@ -21,16 +21,23 @@ class NeoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreNeoRequest $request)
+    public function store(StoreNeoRequest $request): JsonResponse
     {
-        //
+        $validated = $request->validated();
+
+        $neo = Neo::create($validated);
+
+        return response()->json([
+            'Message' => "It's all good!",
+            'neo' => $neo->fresh(),
+        ], 201);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(int $neo): JsonResponse
+    public function show(Neo $neo): JsonResponse
     {
-        return response()->json([Neo::findOrFail($neo)]);
+        return response()->json($neo);
     }
 }
